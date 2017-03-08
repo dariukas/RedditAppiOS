@@ -47,14 +47,18 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     // MARK: UITableViewDataSource
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        //var cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath as IndexPath)
-        var cell : CustomTableViewCell = CustomTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "topCell")
+        var cell = tableView.dequeueReusableCell(withIdentifier: "topCell", for: indexPath as IndexPath) as! CustomTableViewCell
+//        var cell : CustomTableViewCell = CustomTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "topCell")
         setCellData(&cell, item: items[indexPath.row])
         return cell
     }
@@ -65,10 +69,9 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
                 return
         }
         if let data = NSData(contentsOf: url as URL) as? Data {
-            cell.imageView?.image = UIImage(data: data)
-            cell.imageView?.frame = CGRect(x : 0, y : 0,width: 45, height: 45)
+            cell.customImageView?.image = UIImage(data: data)
         }
-        cell.textLabel?.text = item.title
+        cell.customLabel?.text = item.title
     }
     
     // MARK: UITableViewDelegate
@@ -83,7 +86,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showDetails", sender: self)
+        //performSegue(withIdentifier: "showDetails", sender: self)
     }
     
     
@@ -122,7 +125,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             }
         }
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetails" {

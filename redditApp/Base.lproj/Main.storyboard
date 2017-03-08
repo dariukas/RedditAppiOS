@@ -21,28 +21,29 @@
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="14" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="U5k-4a-82E">
-                                <rect key="frame" x="0.0" y="88" width="375" height="579"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="579"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="topCell" id="gFR-VW-DH4" customClass="CustomTableViewCell" customModule="redditApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="14"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gFR-VW-DH4" id="P4D-Wo-or8">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="gFR-VW-DH4" id="P4D-Wo-or8">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="14"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PMi-YK-sOB">
-                                                    <rect key="frame" x="10" y="0.0" width="14" height="14"/>
+                                                    <rect key="frame" x="10" y="-13" width="40" height="40"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="ZeK-EV-iNl"/>
                                                         <constraint firstAttribute="width" secondItem="PMi-YK-sOB" secondAttribute="height" id="iiB-Il-W94"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PpI-As-nSa">
-                                                    <rect key="frame" x="34" y="-4" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PpI-As-nSa">
+                                                    <rect key="frame" x="70" y="14.5" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -53,11 +54,12 @@
                                                 <constraint firstItem="PpI-As-nSa" firstAttribute="centerY" secondItem="P4D-Wo-or8" secondAttribute="centerY" id="A9N-Hr-f02"/>
                                                 <constraint firstItem="PMi-YK-sOB" firstAttribute="centerY" secondItem="P4D-Wo-or8" secondAttribute="centerY" id="B4C-MQ-Ugf"/>
                                                 <constraint firstItem="PpI-As-nSa" firstAttribute="leading" secondItem="PMi-YK-sOB" secondAttribute="trailing" constant="10" id="Mt5-ao-lBB"/>
-                                                <constraint firstItem="PMi-YK-sOB" firstAttribute="height" secondItem="P4D-Wo-or8" secondAttribute="height" id="kGS-2R-LxX"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="rEj-CG-hWG" kind="show" id="3Ce-YY-X2e"/>
+                                            <outlet property="customImageView" destination="PMi-YK-sOB" id="gl5-U9-XLp"/>
+                                            <outlet property="customLabel" destination="PpI-As-nSa" id="V5i-r5-wv5"/>
+                                            <segue destination="rEj-CG-hWG" kind="show" identifier="showDetails" id="3Ce-YY-X2e"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -67,7 +69,7 @@
                                 </connections>
                             </tableView>
                             <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="GK1-eH-hAj">
-                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
@@ -82,6 +84,7 @@
                             <constraint firstItem="GK1-eH-hAj" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" id="ySN-sj-f9v"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="yPI-1Y-6hx"/>
                     <connections>
                         <outlet property="tableView" destination="U5k-4a-82E" id="vMn-fY-Gmm"/>
@@ -180,6 +183,7 @@
         <scene sceneID="HYq-2h-bdB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GAq-or-9lc" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Top" id="lzf-f5-xue"/>
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
