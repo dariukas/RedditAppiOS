@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A35086611E6FA5A700311A8E /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35086601E6FA5A600311A8E /* CustomTableViewCell.swift */; };
-		A35086631E6FAD7A00311A8E /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35086621E6FAD7A00311A8E /* ActivityIndicator.swift */; };
 		A35086661E6FC94900311A8E /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35086651E6FC94900311A8E /* DetailsViewController.swift */; };
 		A35086681E701B2300311A8E /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35086671E701B2300311A8E /* FavoritesViewController.swift */; };
 		A350866A1E701B3A00311A8E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35086691E701B3A00311A8E /* MainViewController.swift */; };
@@ -41,7 +40,6 @@
 
 /* Begin PBXFileReference section */
 		A35086601E6FA5A600311A8E /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		A35086621E6FAD7A00311A8E /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		A35086651E6FC94900311A8E /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		A35086671E701B2300311A8E /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		A35086691E701B3A00311A8E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -133,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				A352A9331E6F756400DD170F /* RedditSession.swift */,
-				A35086621E6FAD7A00311A8E /* ActivityIndicator.swift */,
 				A350866B1E70475900311A8E /* CoreDataStore.swift */,
 				A350866D1E70481A00311A8E /* Favorites.xcdatamodeld */,
 			);
@@ -300,7 +297,6 @@
 				A350866C1E70475900311A8E /* CoreDataStore.swift in Sources */,
 				A35086611E6FA5A700311A8E /* CustomTableViewCell.swift in Sources */,
 				A35086B11E70744300311A8E /* TopTableViewCell.swift in Sources */,
-				A35086631E6FAD7A00311A8E /* ActivityIndicator.swift in Sources */,
 				A352A9341E6F756400DD170F /* RedditSession.swift in Sources */,
 				A350866F1E70481A00311A8E /* Favorites.xcdatamodeld in Sources */,
 				A35086681E701B2300311A8E /* FavoritesViewController.swift in Sources */,

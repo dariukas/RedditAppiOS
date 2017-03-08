@@ -111,6 +111,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Cm3-AS-7Lt">
+                                <rect key="frame" x="94" y="332" width="187.5" height="2"/>
+                                <color key="trackTintColor" red="1" green="0.1955048539" blue="0.088545052370000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </progressView>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YnJ-a6-QM8">
                                 <rect key="frame" x="0.0" y="55" width="375" height="553"/>
                             </webView>
@@ -151,7 +155,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YnJ-a6-QM8" firstAttribute="width" secondItem="Rk6-hH-oEi" secondAttribute="width" id="2Vc-KF-1Xz"/>
+                            <constraint firstItem="Cm3-AS-7Lt" firstAttribute="width" secondItem="Rk6-hH-oEi" secondAttribute="width" multiplier="1:2" id="5GO-2m-cs7"/>
                             <constraint firstItem="YnJ-a6-QM8" firstAttribute="top" secondItem="gTz-Ta-5BP" secondAttribute="bottom" constant="10" id="Cig-Sl-hzG"/>
+                            <constraint firstItem="Cm3-AS-7Lt" firstAttribute="centerY" secondItem="Rk6-hH-oEi" secondAttribute="centerY" id="IWh-i1-V9r"/>
+                            <constraint firstItem="Cm3-AS-7Lt" firstAttribute="centerX" secondItem="Rk6-hH-oEi" secondAttribute="centerX" id="Nlh-kb-LKU"/>
                             <constraint firstItem="YnJ-a6-QM8" firstAttribute="centerX" secondItem="Rk6-hH-oEi" secondAttribute="centerX" id="Obc-GN-eJH"/>
                             <constraint firstItem="9cV-lq-iap" firstAttribute="width" secondItem="Rk6-hH-oEi" secondAttribute="width" multiplier="2:5" id="W4r-ir-MJ0"/>
                             <constraint firstItem="gTz-Ta-5BP" firstAttribute="top" secondItem="Rk6-hH-oEi" secondAttribute="topMargin" constant="15" id="bMP-US-sMN"/>
@@ -163,6 +170,7 @@
                     </view>
                     <connections>
                         <outlet property="editButton" destination="yB6-t4-Pdt" id="4Bi-YO-Gtx"/>
+                        <outlet property="progressView" destination="Cm3-AS-7Lt" id="0hL-Fp-uH3"/>
                         <outlet property="titleLabel" destination="9cV-lq-iap" id="lxY-5l-3MX"/>
                         <outlet property="webView" destination="YnJ-a6-QM8" id="Hjl-yy-jWk"/>
                     </connections>

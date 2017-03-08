@@ -9,10 +9,11 @@
 import UIKit
 import CoreData
 
-class DetailsViewController: UIViewController {
+class DetailsViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var webView: UIWebView!
     
     var item: Reddit?
@@ -24,6 +25,7 @@ class DetailsViewController: UIViewController {
         setView()
         //Issue ref: http://stackoverflow.com/questions/39520499/class-plbuildversion-is-implemented-in-both-frameworks
         loadWebViewContent()
+        webView.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -62,6 +64,21 @@ class DetailsViewController: UIViewController {
         } else {
             store?.save(theItem)
         }
+    }
+    
+    // MARK: - UIWebViewDelegate
+    
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        self.progressView.setProgress(0.1, animated: false)
+    }
+    
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        self.progressView.setProgress(1.0, animated: true)
+    }
+    
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        self.progressView.setProgress(1.0, animated: true)
     }
 
     /*

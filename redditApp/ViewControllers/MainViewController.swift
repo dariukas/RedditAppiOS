@@ -19,6 +19,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var items: [Reddit] = []
     var after: String?
     var filteredItems: [Reddit] = []
+    var cache: [Reddit] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,14 +96,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK: UISearchBarDelegate
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if let text = searchBar.text {
-            let search = text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-            if (search.characters.count > 2) {
-                filterData(search.lowercased()) //not case sensitive
-                items = filteredItems
-                tableView.reloadData()
-            }
-        }
+        searching(searchBar)
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -114,13 +108,31 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         searchBar.setShowsCancelButton(false, animated: true)
         searchBar.resignFirstResponder()
         filteredItems = []
+        items = cache
         tableView.reloadData()
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searching(searchBar)
+    }
+    
+    func searching(_ searchBar: UISearchBar) {
+        if let text = searchBar.text {
+            let search = text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+            if (search.characters.count > 2) {
+                filterData(search.lowercased()) //not case sensitive
+                items = filteredItems
+                tableView.reloadData()
+                filteredItems = [] //to avoid duplications of result
+            }
+        }
+    }
+    
     func filterData(_ search: String) {
-        for item in items {
+        for item in cache {
             //not case sensitive
             if let title = item.title {
+                //Ref: http://stackoverflow.com/questions/24034043/how-do-i-check-if-a-string-contains-another-string-in-swift
                 if title.lowercased().range(of:search) != nil {
                     filteredItems.append(item)
                 }
@@ -150,11 +162,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func getList(_ api: String) {
         Reddit.getRedditList(api: api) { (results, result) in
-            self.items.append(contentsOf: results)
+            self.cache.append(contentsOf: results)
             self.after = result
             DispatchQueue.main.async {
                 self.indicator.stopAnimating()
                 //self.indicator.isHidden = true
+                self.items = self.cache
                 self.tableView.reloadData()
             }
         }
