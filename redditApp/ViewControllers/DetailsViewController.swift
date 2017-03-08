@@ -2,7 +2,7 @@
 //  DetailsViewController.swift
 //  redditApp
 //
-//  Created by Kristina Šlekytė on 08/03/2017.
+//  Created by Darius Miliauskas on 08/03/2017.
 //  Copyright © 2017 Darius Miliauskas. All rights reserved.
 //
 
@@ -28,7 +28,6 @@ class DetailsViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func setView() {
@@ -41,7 +40,6 @@ class DetailsViewController: UIViewController {
     }
     
     func loadWebViewContent() {
-       
         guard let theItem = item as Reddit? else {
               return
         }
@@ -65,18 +63,6 @@ class DetailsViewController: UIViewController {
             store?.save(theItem)
         }
     }
-    
-    //return -1 if not exist
-//    func itemIndexInFavorites() -> Int {
-//        guard let favorites: [Reddit] = UserDefaults.standard.value(forKey: "Favorites") as? Array<Reddit>, let theItem = item else {
-//            return -1
-//        }
-//        if let index = favorites.index(of: theItem) {
-//            return index
-//        } else {
-//            return -1
-//        }
-//    }
 
     /*
     // MARK: - Navigation

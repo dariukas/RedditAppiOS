@@ -42,27 +42,28 @@ class CoreDataStore: NSObject {
                 return
         }
         let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "Favorite")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Favorite")
+        guard let title = item.title else {
+             return
+        }
+        fetchRequest.predicate = NSPredicate(format: "title CONTAINS %@", title)
         
-        if let result = try? managedContext.fetch(fetchRequest) {
-            for object in result {
-                if object == item {
-                    managedContext.delete(object)
-                }
+        do {
+            favorites = try managedContext.fetch(fetchRequest as! NSFetchRequest<NSFetchRequestResult>) as! [NSManagedObject]
+            if (favorites.count>0) {
+               managedContext.delete(favorites.first!)
             }
+        } catch {
+            print("Error.")
         }
     }
     
     func fetchData() -> [Reddit] {
-        
         let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        
         let fetchRequest =
             NSFetchRequest<NSManagedObject>(entityName: "Favorite")
         
         var redditArray = [Reddit]()
-        
         do {
             favorites = try managedContext.fetch(fetchRequest)
         } catch let error as NSError {
@@ -72,7 +73,7 @@ class CoreDataStore: NSObject {
         for favorite in favorites {
             let reddit = Reddit()
             reddit.title = favorite.value(forKey: "title") as! String?
-            reddit.thumbnailLink = favorite.value(forKey: "thumbnail") as! String?
+            reddit.thumbnailLink = favorite.value(forKey: "thumbnailLink") as! String?
             reddit.permalink = favorite.value(forKey: "permalink") as! String?
             redditArray.append(reddit)
         }
@@ -91,7 +92,7 @@ class CoreDataStore: NSObject {
         do {
             favorites = try managedContext.fetch(request as! NSFetchRequest<NSFetchRequestResult>) as! [NSManagedObject]
         } catch {
-            print("Error")
+            print("Error.")
         }
         return favorites.count>0
     }

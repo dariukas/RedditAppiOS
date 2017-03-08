@@ -21,11 +21,11 @@
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="14" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="U5k-4a-82E">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="topCell" id="gFR-VW-DH4" customClass="CustomTableViewCell" customModule="redditApp" customModuleProvider="target">
@@ -88,7 +88,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Top" id="Qv7-rG-Kag"/>
+                    <tabBarItem key="tabBarItem" title="Top" image="reddit.png" id="Qv7-rG-Kag"/>
                     <navigationItem key="navigationItem" id="yPI-1Y-6hx"/>
                     <connections>
                         <outlet property="searchBar" destination="GK1-eH-hAj" id="8KY-mZ-eeX"/>
@@ -112,33 +112,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YnJ-a6-QM8">
-                                <rect key="frame" x="0.0" y="55" width="375" height="602"/>
+                                <rect key="frame" x="0.0" y="55" width="375" height="553"/>
                             </webView>
-                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gTz-Ta-5BP">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gTz-Ta-5BP">
                                 <rect key="frame" x="0.0" y="15" width="375" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="92q-gk-AmJ">
                                         <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
-                                        <state key="normal" title="&lt; Back"/>
+                                        <state key="normal" title="&lt; Back">
+                                            <color key="titleColor" red="1" green="0.1955048539" blue="0.088545052370000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
-                                            <segue destination="9pv-A4-QxB" kind="show" id="s4p-Mr-YnW"/>
+                                            <segue destination="iqs-xA-iEt" kind="show" id="GYd-vZ-aQN"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cV-lq-iap">
-                                        <rect key="frame" x="85" y="5" width="150" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cV-lq-iap">
+                                        <rect key="frame" x="112.5" y="5" width="150" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yB6-t4-Pdt">
-                                        <rect key="frame" x="245" y="0.0" width="130" height="30"/>
-                                        <state key="normal" title="Add"/>
+                                        <rect key="frame" x="345" y="0.0" width="30" height="30"/>
+                                        <state key="normal" title="Add">
+                                            <color key="titleColor" red="1" green="0.1955048539" blue="0.088545052370000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="editButtonClicked:" destination="rEj-CG-hWG" eventType="touchUpInside" id="4VA-aA-HIZ"/>
-                                            <segue destination="9pv-A4-QxB" kind="show" id="weA-bQ-QVA"/>
+                                            <segue destination="iqs-xA-iEt" kind="show" id="YOq-dm-bOe"/>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="9cV-lq-iap" firstAttribute="centerX" secondItem="gTz-Ta-5BP" secondAttribute="centerX" id="cJe-bw-smo"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -162,7 +169,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pxi-bu-A21" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6274.3999999999996" y="-294.60269865067471"/>
+            <point key="canvasLocation" x="6378" y="133"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="70V-Ed-1lu">
@@ -223,7 +230,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favorites" id="BmR-9p-HxF"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="like.png" id="BmR-9p-HxF"/>
                     <connections>
                         <outlet property="tableView" destination="fNt-9e-iDp" id="uXs-fs-1tt"/>
                     </connections>
@@ -238,6 +245,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="iqs-xA-iEt" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Pex-Ae-K0X">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
@@ -248,10 +256,14 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hcB-3D-xVL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3830" y="98"/>
+            <point key="canvasLocation" x="4314" y="81"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="like.png" width="256" height="256"/>
+        <image name="reddit.png" width="225" height="225"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="s4p-Mr-YnW"/>
+        <segue reference="YOq-dm-bOe"/>
     </inferredMetricsTieBreakers>
 </document>

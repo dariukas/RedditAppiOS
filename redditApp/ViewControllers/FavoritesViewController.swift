@@ -93,11 +93,13 @@ class FavoritesViewController: UIViewController {
     }
     
     func getList() {
-            self.indicator.stopAnimating()
-        if let favorites = UserDefaults.standard.value(forKey: "Favorites") as? [Reddit] {
-            favoriteItems = favorites
-            self.tableView.reloadData()
-        }
+        self.indicator.stopAnimating()
+//        guard let store: CoreDataStore = CoreDataStore() else {
+//            return
+//        }
+        let store: CoreDataStore = CoreDataStore()
+        favoriteItems = store.fetchData()
+        self.tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
