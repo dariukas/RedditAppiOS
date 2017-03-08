@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoritesViewController: UIViewController {
+class FavoritesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     var indicator = UIActivityIndicatorView()
@@ -18,7 +18,6 @@ class FavoritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //setView()
         activityIndicator()
         addRefreshControl()
         getList()
@@ -37,10 +36,6 @@ class FavoritesViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setView() {
-        //self.title = "Favorites"
-    }
-    
     // MARK: UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,12 +43,12 @@ class FavoritesViewController: UIViewController {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "favoritesCell", for: indexPath as IndexPath) as! CustomTableViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: "favoritesCell", for: indexPath as IndexPath) as! FavoritesTableViewCell
         setCellData(&cell, item: favoriteItems[indexPath.row])
         return cell
     }
     
-    func setCellData(_ cell: inout CustomTableViewCell, item: Reddit) {
+    func setCellData(_ cell: inout FavoritesTableViewCell, item: Reddit) {
         guard let link = item.thumbnailLink,
             let url = NSURL(string: link) else {
                 return
@@ -68,10 +63,6 @@ class FavoritesViewController: UIViewController {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //performSegue(withIdentifier: "showDetails", sender: self)
     }
 
     // MARK: UIRefreshControl
@@ -103,7 +94,7 @@ class FavoritesViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetails" {
+        if segue.identifier == "showFavoritesDetails" {
             let controller = segue.destination as! DetailsViewController
             if let path = self.tableView.indexPathForSelectedRow {
                 controller.item = favoriteItems[path.row]

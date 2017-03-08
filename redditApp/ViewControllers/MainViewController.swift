@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -18,7 +18,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var items: [Reddit] = []
     var after: String?
-    
+    var filteredItems: [Reddit] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
@@ -55,13 +56,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "topCell", for: indexPath as IndexPath) as! CustomTableViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: "topCell", for: indexPath as IndexPath) as! TopTableViewCell
         //        var cell : CustomTableViewCell = CustomTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "topCell")
         setCellData(&cell, item: items[indexPath.row])
         return cell
     }
     
-    func setCellData(_ cell: inout CustomTableViewCell, item: Reddit) {
+    func setCellData(_ cell: inout TopTableViewCell, item: Reddit) {
         guard let link = item.thumbnailLink,
             let url = NSURL(string: link) else {
                 return
@@ -87,13 +88,44 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //performSegue(withIdentifier: "showDetails", sender: self)
+//    }
+    
+    // MARK: UISearchBarDelegate
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if let text = searchBar.text {
+            let search = text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+            if (search.characters.count > 2) {
+                filterData(search.lowercased()) //not case sensitive
+                items = filteredItems
+                tableView.reloadData()
+            }
+        }
     }
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
     
-    class func someMethod(closure: () -> Void) {
-        // secret stuff
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.resignFirstResponder()
+        filteredItems = []
+        tableView.reloadData()
+    }
+    
+    func filterData(_ search: String) {
+        for item in items {
+            //not case sensitive
+            if let title = item.title {
+                if title.lowercased().range(of:search) != nil {
+                    filteredItems.append(item)
+                }
+            }
+        }
     }
     
     // MARK: UIRefreshControl

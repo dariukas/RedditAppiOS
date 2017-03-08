@@ -17,6 +17,8 @@
 		A35086721E70499500311A8E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35086711E70499500311A8E /* CoreData.framework */; };
 		A35086A81E70727700311A8E /* reddit.png in Resources */ = {isa = PBXBuildFile; fileRef = A35086A71E70727700311A8E /* reddit.png */; };
 		A35086AA1E70727F00311A8E /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = A35086A91E70727F00311A8E /* like.png */; };
+		A35086AF1E70742D00311A8E /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35086AE1E70742D00311A8E /* FavoritesTableViewCell.swift */; };
+		A35086B11E70744300311A8E /* TopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35086B01E70744300311A8E /* TopTableViewCell.swift */; };
 		A352A9291E6F61C700DD170F /* Data1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A352A9281E6F61C700DD170F /* Data1.swift */; };
 		A352A9321E6F754A00DD170F /* Reddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A352A9311E6F754A00DD170F /* Reddit.swift */; };
 		A352A9341E6F756400DD170F /* RedditSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A352A9331E6F756400DD170F /* RedditSession.swift */; };
@@ -48,6 +50,8 @@
 		A35086711E70499500311A8E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A35086A71E70727700311A8E /* reddit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reddit.png; sourceTree = "<group>"; };
 		A35086A91E70727F00311A8E /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
+		A35086AE1E70742D00311A8E /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
+		A35086B01E70744300311A8E /* TopTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopTableViewCell.swift; sourceTree = "<group>"; };
 		A352A9281E6F61C700DD170F /* Data1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data1.swift; sourceTree = "<group>"; };
 		A352A9311E6F754A00DD170F /* Reddit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reddit.swift; sourceTree = "<group>"; };
 		A352A9331E6F756400DD170F /* RedditSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditSession.swift; sourceTree = "<group>"; };
@@ -108,6 +112,15 @@
 			path = Icons;
 			sourceTree = "<group>";
 		};
+		A35086AD1E70741A00311A8E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A35086AE1E70742D00311A8E /* FavoritesTableViewCell.swift */,
+				A35086B01E70744300311A8E /* TopTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		A352A92C1E6F744C00DD170F /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +162,7 @@
 		A3C3C01B1E6F2F9500893132 /* redditApp */ = {
 			isa = PBXGroup;
 			children = (
+				A35086AD1E70741A00311A8E /* Cells */,
 				A35086A21E706F5A00311A8E /* Icons */,
 				A35086641E6FC93100311A8E /* ViewControllers */,
 				A352A92D1E6F745900DD170F /* Other */,
@@ -279,11 +293,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A352A9321E6F754A00DD170F /* Reddit.swift in Sources */,
+				A35086AF1E70742D00311A8E /* FavoritesTableViewCell.swift in Sources */,
 				A350866A1E701B3A00311A8E /* MainViewController.swift in Sources */,
 				A35086661E6FC94900311A8E /* DetailsViewController.swift in Sources */,
 				A3C3C01D1E6F2F9500893132 /* AppDelegate.swift in Sources */,
 				A350866C1E70475900311A8E /* CoreDataStore.swift in Sources */,
 				A35086611E6FA5A700311A8E /* CustomTableViewCell.swift in Sources */,
+				A35086B11E70744300311A8E /* TopTableViewCell.swift in Sources */,
 				A35086631E6FAD7A00311A8E /* ActivityIndicator.swift in Sources */,
 				A352A9341E6F756400DD170F /* RedditSession.swift in Sources */,
 				A350866F1E70481A00311A8E /* Favorites.xcdatamodeld in Sources */,

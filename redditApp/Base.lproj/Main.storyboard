@@ -28,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="topCell" id="gFR-VW-DH4" customClass="CustomTableViewCell" customModule="redditApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="topCell" id="gFR-VW-DH4" customClass="TopTableViewCell" customModule="redditApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="14"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="gFR-VW-DH4" id="P4D-Wo-or8">
@@ -57,8 +57,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="customImageView" destination="PMi-YK-sOB" id="gl5-U9-XLp"/>
-                                            <outlet property="customLabel" destination="PpI-As-nSa" id="V5i-r5-wv5"/>
+                                            <outlet property="customImageView" destination="PMi-YK-sOB" id="Aei-uP-x5C"/>
+                                            <outlet property="customLabel" destination="PpI-As-nSa" id="SwK-Yp-F53"/>
                                             <segue destination="rEj-CG-hWG" kind="show" identifier="showDetails" id="3Ce-YY-X2e"/>
                                         </connections>
                                     </tableViewCell>
@@ -183,12 +183,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="14" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fNt-9e-iDp">
-                                <rect key="frame" x="0.0" y="56" width="375" height="554"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="14" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fNt-9e-iDp">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoritesCell" id="aus-W2-N9c" customClass="CustomTableViewCell" customModule="redditApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoritesCell" id="aus-W2-N9c" customClass="FavoritesTableViewCell" customModule="redditApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="14"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="aus-W2-N9c" id="FE7-uu-Wgc">
@@ -217,22 +216,29 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="customImageView" destination="2Fy-e7-cNC" id="VpX-BA-NHd"/>
-                                            <outlet property="customLabel" destination="qQO-j3-NOe" id="iOV-TN-Mm3"/>
+                                            <outlet property="customImageView" destination="2Fy-e7-cNC" id="pW0-dG-ESj"/>
+                                            <outlet property="customLabel" destination="qQO-j3-NOe" id="uPH-eJ-ibE"/>
+                                            <segue destination="rEj-CG-hWG" kind="show" identifier="showFavoritesDetails" id="PFT-dd-jhQ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="BAb-fb-kxA" id="rHG-Wg-PFw"/>
-                                    <outlet property="delegate" destination="BAb-fb-kxA" id="UAl-hk-Dfs"/>
+                                    <outlet property="dataSource" destination="BAb-fb-kxA" id="RtL-Yw-ebE"/>
+                                    <outlet property="delegate" destination="BAb-fb-kxA" id="VeW-IL-m2V"/>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.1955048539" blue="0.088545052370000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="fNt-9e-iDp" firstAttribute="top" secondItem="tDv-bI-Pxj" secondAttribute="bottom" id="6th-VM-uxH"/>
+                            <constraint firstItem="fNt-9e-iDp" firstAttribute="width" secondItem="TMw-B2-bFj" secondAttribute="width" id="Gf7-f2-Qae"/>
+                            <constraint firstItem="J3A-7V-dpW" firstAttribute="top" secondItem="fNt-9e-iDp" secondAttribute="bottom" id="Tli-Hx-Sb6"/>
+                            <constraint firstItem="fNt-9e-iDp" firstAttribute="centerX" secondItem="TMw-B2-bFj" secondAttribute="centerX" id="qSf-pI-eVn"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Favorites" image="like.png" id="BmR-9p-HxF"/>
                     <connections>
-                        <outlet property="tableView" destination="fNt-9e-iDp" id="uXs-fs-1tt"/>
+                        <outlet property="tableView" destination="fNt-9e-iDp" id="yhh-oU-dhF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MgW-Os-3G0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -260,10 +266,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="like.png" width="256" height="256"/>
-        <image name="reddit.png" width="225" height="225"/>
+        <image name="like.png" width="16" height="16"/>
+        <image name="reddit.png" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="PFT-dd-jhQ"/>
         <segue reference="YOq-dm-bOe"/>
     </inferredMetricsTieBreakers>
 </document>

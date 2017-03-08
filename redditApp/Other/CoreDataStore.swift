@@ -104,4 +104,8 @@ class CoreDataStore: NSObject {
 //        }
 //        return appDelegate.persistentContainer.viewContext
 //    }
+    
+//    class func someMethod(closure: () -> Void) {
+//        // secret stuff
+//    }
 }
