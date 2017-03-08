@@ -29,6 +29,7 @@ class DetailsViewController: UIViewController {
     
     func setView() {
         self.title = item?.title
+        //self.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
     }
     
     func loadWebViewContent() {

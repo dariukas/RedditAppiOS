@@ -1,16 +1,18 @@
 //
-//  FirstViewController.swift
+//  MainViewController.swift
 //  redditApp
 //
-//  Created by Kristina Šlekytė on 07/03/2017.
+//  Created by Kristina Šlekytė on 08/03/2017.
 //  Copyright © 2017 Darius Miliauskas. All rights reserved.
 //
 
 import UIKit
 
-class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarControllerDelegate {
+
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var indicator = UIActivityIndicatorView()
     let refreshControl = UIRefreshControl()
     
@@ -23,9 +25,9 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         activityIndicator()
         addRefreshControl()
         getList("top.json")
-//        Data1.request2() { (response) in
-//                        print(response)
-//                }
+        //        Data1.request2() { (response) in
+        //                        print(response)
+        //                }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,7 +37,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             tableView.deselectRow(at: path, animated: true)
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -47,10 +49,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     // MARK: UITableViewDataSource
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
@@ -58,7 +56,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         var cell = tableView.dequeueReusableCell(withIdentifier: "topCell", for: indexPath as IndexPath) as! CustomTableViewCell
-//        var cell : CustomTableViewCell = CustomTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "topCell")
+        //        var cell : CustomTableViewCell = CustomTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "topCell")
         setCellData(&cell, item: items[indexPath.row])
         return cell
     }
@@ -76,11 +74,15 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     // MARK: UITableViewDelegate
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let lastElement = items.count - 2
         if indexPath.row == lastElement {
             if let name = self.after {
-               getList("top.json?after=\(name)")
+                getList("top.json?after=\(name)")
             }
         }
     }
@@ -113,6 +115,16 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         refreshControl.endRefreshing()
         return scrollView.scrollsToTop
     }
+    
+    
+    // MARK: UITabBarControllerDelegate
+    
+    func tabBarController(_ tabBarController: UITabBarController,
+                          didSelect viewController: UIViewController) {
+        
+        print("cool")
+    }
+    
     
     func getList(_ api: String) {
         Reddit.getRedditList(api: api) { (results, result) in
@@ -148,5 +160,5 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         view.addSubview(indicator)
         indicator.startAnimating()
     }
-}
 
+}
