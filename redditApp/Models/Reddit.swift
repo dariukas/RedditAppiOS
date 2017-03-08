@@ -13,7 +13,6 @@ class Reddit: NSObject {
     var title: String?
     var thumbnailLink: String?
     var permalink: String?
-    var isFavorite: Bool?
     
     class func getRedditList(api: String, handler: @escaping ([Reddit], String) -> ()){
         //var api : String = "top.json"
@@ -49,7 +48,6 @@ class Reddit: NSObject {
             reddit.title = title
             reddit.thumbnailLink = thumbnail
             reddit.permalink = permalink
-            reddit.isFavorite = false
             redditArray.append(reddit)
         }
         return redditArray

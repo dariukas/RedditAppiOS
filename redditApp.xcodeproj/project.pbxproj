@@ -12,6 +12,9 @@
 		A35086661E6FC94900311A8E /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35086651E6FC94900311A8E /* DetailsViewController.swift */; };
 		A35086681E701B2300311A8E /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35086671E701B2300311A8E /* FavoritesViewController.swift */; };
 		A350866A1E701B3A00311A8E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35086691E701B3A00311A8E /* MainViewController.swift */; };
+		A350866C1E70475900311A8E /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A350866B1E70475900311A8E /* CoreDataStore.swift */; };
+		A350866F1E70481A00311A8E /* Favorites.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A350866D1E70481A00311A8E /* Favorites.xcdatamodeld */; };
+		A35086721E70499500311A8E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35086711E70499500311A8E /* CoreData.framework */; };
 		A352A9291E6F61C700DD170F /* Data1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A352A9281E6F61C700DD170F /* Data1.swift */; };
 		A352A9321E6F754A00DD170F /* Reddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A352A9311E6F754A00DD170F /* Reddit.swift */; };
 		A352A9341E6F756400DD170F /* RedditSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A352A9331E6F756400DD170F /* RedditSession.swift */; };
@@ -38,6 +41,9 @@
 		A35086651E6FC94900311A8E /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		A35086671E701B2300311A8E /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		A35086691E701B3A00311A8E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A350866B1E70475900311A8E /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
+		A350866E1E70481A00311A8E /* Favorites.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Favorites.xcdatamodel; sourceTree = "<group>"; };
+		A35086711E70499500311A8E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A352A9281E6F61C700DD170F /* Data1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data1.swift; sourceTree = "<group>"; };
 		A352A9311E6F754A00DD170F /* Reddit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reddit.swift; sourceTree = "<group>"; };
 		A352A9331E6F756400DD170F /* RedditSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedditSession.swift; sourceTree = "<group>"; };
@@ -57,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A35086721E70499500311A8E /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +87,14 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		A35086701E70499500311A8E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A35086711E70499500311A8E /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A352A92C1E6F744C00DD170F /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +108,8 @@
 			children = (
 				A352A9331E6F756400DD170F /* RedditSession.swift */,
 				A35086621E6FAD7A00311A8E /* ActivityIndicator.swift */,
+				A350866B1E70475900311A8E /* CoreDataStore.swift */,
+				A350866D1E70481A00311A8E /* Favorites.xcdatamodeld */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -103,6 +120,7 @@
 				A3C3C01B1E6F2F9500893132 /* redditApp */,
 				A3C3C0321E6F2F9500893132 /* redditAppTests */,
 				A3C3C01A1E6F2F9500893132 /* Products */,
+				A35086701E70499500311A8E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -248,9 +266,11 @@
 				A350866A1E701B3A00311A8E /* MainViewController.swift in Sources */,
 				A35086661E6FC94900311A8E /* DetailsViewController.swift in Sources */,
 				A3C3C01D1E6F2F9500893132 /* AppDelegate.swift in Sources */,
+				A350866C1E70475900311A8E /* CoreDataStore.swift in Sources */,
 				A35086611E6FA5A700311A8E /* CustomTableViewCell.swift in Sources */,
 				A35086631E6FAD7A00311A8E /* ActivityIndicator.swift in Sources */,
 				A352A9341E6F756400DD170F /* RedditSession.swift in Sources */,
+				A350866F1E70481A00311A8E /* Favorites.xcdatamodeld in Sources */,
 				A35086681E701B2300311A8E /* FavoritesViewController.swift in Sources */,
 				A352A9291E6F61C700DD170F /* Data1.swift in Sources */,
 			);
@@ -468,6 +488,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A350866D1E70481A00311A8E /* Favorites.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A350866E1E70481A00311A8E /* Favorites.xcdatamodel */,
+			);
+			currentVersion = A350866E1E70481A00311A8E /* Favorites.xcdatamodel */;
+			path = Favorites.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A3C3C0111E6F2F9500893132 /* Project object */;
 }

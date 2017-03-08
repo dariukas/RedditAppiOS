@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailsViewController: UIViewController {
     
@@ -15,11 +16,11 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var webView: UIWebView!
     
     var item: Reddit?
-    var indexOfFavorite: Int?
+    let store: CoreDataStore? = CoreDataStore()
+    var isFavorite: Bool? = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        indexOfFavorite = itemIndexInFavorites()
         setView()
         //Issue ref: http://stackoverflow.com/questions/39520499/class-plbuildversion-is-implemented-in-both-frameworks
         loadWebViewContent()
@@ -32,55 +33,51 @@ class DetailsViewController: UIViewController {
     
     func setView() {
         titleLabel.text = item?.title
+        isFavorite = store!.searchData((item?.title)!)
         //self.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-        if (indexOfFavorite! > -1) {
+        if (isFavorite)! {
             editButton.setTitle("Remove", for: .normal)
         }
     }
     
     func loadWebViewContent() {
-        let url = NSURL (string: (item?.permalink)!)
+       
+        guard let theItem = item as Reddit? else {
+              return
+        }
+        
+        let url = NSURL (string: ("http://www.reddit.com/\(theItem.permalink!)"))
         let requestObj = NSURLRequest(url: url! as URL)
         webView.loadRequest(requestObj as URLRequest)
     }
     
-    @IBAction func editButtonClicked(_ sender: Any) {
-        guard indexOfFavorite! < 0, let theItem = item
-            else {
-                removeFavorite(indexOfFavorite!)
-                return
-        }
-        addFavorite(theItem)
-    }
     
     // MARK: - Adding/Removing Favorites
     
-    func addFavorite(_ item: Reddit?) {
-        guard var favorites: [Reddit] = UserDefaults.standard.value(forKey: "Favorites") as? Array<Reddit>, let theItem = item else {
-            return
+    @IBAction func editButtonClicked(_ sender: Any) {
+        guard let theItem = item
+            else {
+                return
         }
-        favorites.append(theItem)
-        UserDefaults.standard.setValue(favorites, forKey: "Favorites")
+        if (isFavorite)! {
+            store?.delete(theItem)
+        } else {
+            store?.save(theItem)
+        }
     }
     
     //return -1 if not exist
-    func itemIndexInFavorites() -> Int {
-        guard let favorites: [Reddit] = UserDefaults.standard.value(forKey: "Favorites") as? Array<Reddit>, let theItem = item else {
-            return -1
-        }
-        if let index = favorites.index(of: theItem) {
-            return index
-        } else {
-            return -1
-        }
-    }
-    
-    func removeFavorite(_ index : Int) {
-        var favorites: [Reddit] = UserDefaults.standard.value(forKey: "Favorites") as! [Reddit]
-        favorites.remove(at: index)
-        UserDefaults.standard.setValue(favorites, forKey: "Favorites")
-    }
-    
+//    func itemIndexInFavorites() -> Int {
+//        guard let favorites: [Reddit] = UserDefaults.standard.value(forKey: "Favorites") as? Array<Reddit>, let theItem = item else {
+//            return -1
+//        }
+//        if let index = favorites.index(of: theItem) {
+//            return index
+//        } else {
+//            return -1
+//        }
+//    }
+
     /*
     // MARK: - Navigation
 
