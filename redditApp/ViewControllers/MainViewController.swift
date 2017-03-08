@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarControllerDelegate {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -115,16 +115,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         refreshControl.endRefreshing()
         return scrollView.scrollsToTop
     }
-    
-    
-    // MARK: UITabBarControllerDelegate
-    
-    func tabBarController(_ tabBarController: UITabBarController,
-                          didSelect viewController: UIViewController) {
-        
-        print("cool")
-    }
-    
     
     func getList(_ api: String) {
         Reddit.getRedditList(api: api) { (results, result) in

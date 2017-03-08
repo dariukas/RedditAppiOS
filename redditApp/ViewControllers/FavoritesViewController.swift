@@ -8,9 +8,9 @@
 
 import UIKit
 
-class FavoritesViewController: UITableViewController {
+class FavoritesViewController: UIViewController {
 
-    //@IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     var indicator = UIActivityIndicatorView()
     let refreshControl = UIRefreshControl()
     
@@ -18,10 +18,10 @@ class FavoritesViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setView()
+        //setView()
         activityIndicator()
         addRefreshControl()
-        getList("top.json")
+        getList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,16 +38,15 @@ class FavoritesViewController: UITableViewController {
     }
     
     func setView() {
-        self.title = "Favorites"
+        //self.title = "Favorites"
     }
     
     // MARK: UITableViewDataSource
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favoriteItems.count
     }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         var cell = tableView.dequeueReusableCell(withIdentifier: "favoritesCell", for: indexPath as IndexPath) as! CustomTableViewCell
         setCellData(&cell, item: favoriteItems[indexPath.row])
@@ -67,11 +66,11 @@ class FavoritesViewController: UITableViewController {
     
     // MARK: UITableViewDelegate
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //performSegue(withIdentifier: "showDetails", sender: self)
     }
 
@@ -87,27 +86,18 @@ class FavoritesViewController: UITableViewController {
     }
     
     //Ref: http://stackoverflow.com/questions/27030826/bug-with-scrollstotop-and-uirefreshcontrol
-    override func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
+    func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
         refreshControl.beginRefreshing()
         refreshControl.endRefreshing()
         return scrollView.scrollsToTop
     }
     
-    func getList(_ api: String) {
-        
-        
-//       favoriteItems
-//        
-//        
-//        Reddit.getRedditList(api: api) { (results, result) in
-//            self.items.append(contentsOf: results)
-//            self.after = result
-//            DispatchQueue.main.async {
-//                self.indicator.stopAnimating()
-//                //self.indicator.isHidden = true
-//                self.tableView.reloadData()
-//            }
-//        }
+    func getList() {
+            self.indicator.stopAnimating()
+        if let favorites = UserDefaults.standard.value(forKey: "Favorites") as? [Reddit] {
+            favoriteItems = favorites
+            self.tableView.reloadData()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
